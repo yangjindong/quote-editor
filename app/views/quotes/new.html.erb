@@ -1,0 +1,9 @@
+<% content_for :title, "New quote" %>
+<h1>New quote</h1>
+<%= turbo_frame_tag Quote.new do %>
+  <%= render "form", quote: @quote %>
+<% end %>
+<br>
+<div>
+  <%= link_to "Back to quotes", quotes_path %>
+</div>
