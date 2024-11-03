@@ -19,7 +19,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
   <body class="bg-zinc-50">
-    <div class="max-w-screen-sm mx-auto mt-10">
+    <%= render "layouts/navbar" %>
+    <div class="max-w-screen-sm mx-auto mt-5">
       <%= yield %>
     </div>
   </body>

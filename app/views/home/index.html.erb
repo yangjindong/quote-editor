@@ -1,0 +1,9 @@
+<main class="text-center">
+  <h1 class="mb-3 text-2xl font-bold">Quote editor</h1>
+  <p class="mb-5">A blazing fast quote editor built with Hotwire</p>
+  <% if Current.session %>
+    <%= link_to "View quotes", quotes_path, class: "border rounded-md bg-primary-600 text-white p-2" %>
+  <% else %>
+    <%= link_to "Sign in", sign_in_path, class: "border rounded-md bg-primary-600 text-white p-2" %>
+  <% end %>
+</main>
