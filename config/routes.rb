@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :line_items
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"
   get  "sign_up", to: "registrations#new"
@@ -12,7 +13,9 @@ Rails.application.routes.draw do
   end
   root "home#index"
   resources :quotes do
-    resources :line_item_dates, except: [ :index, :show ]
+    resources :line_item_dates, except: [ :index, :show ] do
+      resources :line_items, except: [ :index, :show ]
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -28,4 +28,14 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  helpers:
+    submit:
+      quote:
+        create: Create quote
+        update: Update quote
+      line_item:
+        create: Create item
+        update: Update item
+      line_item_date:
+        create: Create date
+        update: Update date

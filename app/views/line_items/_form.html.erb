@@ -1,0 +1,13 @@
+<%= form_for([quote, line_item_date, line_item], html: { class: "mb-3 bg-white shadow p-2 rounded" }) do |form| %>
+  <%= form_error_notification(line_item) %>
+  <div class="flex flex-wrap items-start gap-2">
+    <%= form.text_field :name, placeholder: "Name", class: "border border-gray-200 rounded p-1" %>
+    <%= form.number_field :quantity, placeholder: "Quantity", class: "border border-gray-200 rounded p-1 w-[6rem]" %>
+    <%= form.text_field :unit_price, placeholder: "Price", class: "border border-gray-200 rounded p-1 w-[6rem]" %>
+    <%= form.textarea :description, placeholder: "Short description of article (optional)", class: "border border-gray-200 rounded p-1 order-2 basis-full max-w-full" %>
+    <div class="flex gap-2 w-[6rem]">
+      <%= link_to "Cancel", quote_path(quote), class: "bg-gray-200 px-2 py-1 rounded" %>
+      <%= form.submit class: "bg-gray-200 px-2 py-1 rounded" %>
+    </div>
+  </div>
+<% end %>

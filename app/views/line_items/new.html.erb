@@ -1,0 +1,9 @@
+<% content_for :title, "New line item" %>
+<h1>New line item</h1>
+<%= turbo_frame_tag nested_dom_id(@line_item_date, LineItem.new) do %>
+  <%= render "form", quote: @quote, line_item_date: @line_item_date, line_item: @line_item %>
+<% end %>
+<br>
+<div>
+  <%= link_to "Back to line items", line_items_path %>
+</div>

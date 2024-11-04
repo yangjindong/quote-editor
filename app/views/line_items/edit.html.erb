@@ -1,0 +1,10 @@
+<% content_for :title, "Editing line item" %>
+<h1>Editing line item</h1>
+<%= turbo_frame_tag @line_item do %>
+  <%= render "form", quote: @quote, line_item_date: @line_item_date,line_item: @line_item %>
+<% end %>
+<br>
+<div>
+  <%= link_to "Show this line item", @line_item %> |
+  <%= link_to "Back to line items", line_items_path %>
+</div>
