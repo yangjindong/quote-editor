@@ -27,7 +27,7 @@ class QuotesController < ApplicationController
       if @quote.save
         format.html { redirect_to @quote, notice: "Quote was successfully created." }
         format.json { render :show, status: :created, location: @quote }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Quote was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class QuotesController < ApplicationController
       if @quote.update(quote_params)
         format.html { redirect_to @quote, notice: "Quote was successfully updated." }
         format.json { render :show, status: :ok, location: @quote }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Quote was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @quote.errors, status: :unprocessable_entity }

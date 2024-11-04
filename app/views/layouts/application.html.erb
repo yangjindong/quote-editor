@@ -20,6 +20,9 @@
   </head>
   <body class="bg-zinc-50">
     <%= render "layouts/navbar" %>
+    <div id="flash" class="fixed flex flex-col items-center max-w-full gap-3 p-3 -translate-x-1/2 top-14 left-1/2 w-max">
+      <%= render "layouts/flash" %>
+    </div>
     <div class="max-w-screen-sm mx-auto mt-5">
       <%= yield %>
     </div>
