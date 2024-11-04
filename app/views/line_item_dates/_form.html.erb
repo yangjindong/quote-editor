@@ -1,0 +1,10 @@
+<%= form_for([quote, line_item_date], html: {class: "mb-3"}) do |f| %>
+  <%= form_error_notification(line_item_date) %>
+  <div class="flex justify-between gap-2">
+    <%= f.date_field :date, html5: true, autofocus: true, class: "flex-1 border border-gray-200 rounded p-1" %>
+    <div class="flex gap-2">
+      <%= link_to "Cancel", quote_path(quote), class: "border bg-gray-100 rounded-md p-1" %>
+      <%= f.submit class: "border bg-gray-100 rounded-md p-1" %>
+    </div>
+  </div>
+<% end %>

@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resource :password_reset,     only: [ :new, :edit, :create, :update ]
   end
   root "home#index"
-  resources :quotes
+  resources :quotes do
+    resources :line_item_dates, except: [ :index, :show ]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

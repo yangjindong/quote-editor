@@ -1,9 +1,5 @@
 <%= form_with(model: quote, class: "border rounded shadow p-2 mb-3") do |form| %>
-  <% if quote.errors.any? %>
-    <div class="error-message">
-      <%= quote.errors.full_messages.to_sentence.capitalize %>
-    </div>
-  <% end %>
+  <%= form_error_notification(quote) %>
   <div class="flex justify-between gap-2">
     <%= form.text_field :name, class: "flex-1 border border-gray-200 rounded p-1" %>
     <div class="flex gap-2">

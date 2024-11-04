@@ -8,6 +8,7 @@ class QuotesController < ApplicationController
 
   # GET /quotes/1 or /quotes/1.json
   def show
+    @line_item_dates = @quote.line_item_dates.ordered
   end
 
   # GET /quotes/new
