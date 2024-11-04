@@ -1,0 +1,6 @@
+<div class="hidden p-5 text-center border border-dashed only:block">
+  <p class="mb-5 text-xl font-bold text-black">
+    You don't have any quotes yet!
+  </p>
+  <%= link_to "Add quote", new_quote_path, data: { turbo_frame: dom_id(Quote.new) }, class: "inline-block border text-sm rounded-md bg-primary-500 px-3 py-2 text-white hover:bg-primary-700" %>
+</div>

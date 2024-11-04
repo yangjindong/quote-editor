@@ -56,7 +56,7 @@ class QuotesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to quotes_path, status: :see_other, notice: "Quote was successfully destroyed." }
       format.json { head :no_content }
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "Quote was successfully destroyed." }
     end
   end
 
