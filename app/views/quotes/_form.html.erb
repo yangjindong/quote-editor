@@ -3,8 +3,18 @@
   <div class="flex justify-between gap-2">
     <%= form.text_field :name, class: "flex-1 border border-gray-200 rounded p-1" %>
     <div class="flex gap-2">
-      <%= link_to "Cancel", quotes_path, class: "block bg-gray-200 p-1 border rounded-md hover:bg-gray-300" %>
-      <%= form.submit class: "bg-primary-500 text-white p-1 border rounded-md hover:bg-primary-600" %>
+      <%= link_to quotes_path, class: "block bg-gray-200 p-1 border rounded-md hover:bg-gray-300" do %>
+        <span class="sr-only">Cancel</span>
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9h13a5 5 0 0 1 0 10H7M3 9l4-4M3 9l4 4"/>
+        </svg>
+      <% end %>
+      <%= form.button class: "bg-green-500 text-white p-1 border rounded-md hover:bg-green-600" do |text| %>
+        <span class="sr-only"><%= text %></span>
+        <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5"/>
+        </svg>
+      <% end %>
     </div>
   </div>
 <% end %>

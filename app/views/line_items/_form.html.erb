@@ -1,13 +1,23 @@
-<%= form_for([quote, line_item_date, line_item], html: { class: "mb-3 bg-white shadow p-2 rounded" }) do |form| %>
+<%= form_for([quote, line_item_date, line_item], html: { class: "mb-3 bg-white shadow p-1 rounded" }) do |form| %>
   <%= form_error_notification(line_item) %>
   <div class="flex flex-wrap items-start gap-2">
-    <%= form.text_field :name, placeholder: "Name", class: "border border-gray-200 rounded p-1" %>
+    <%= form.text_field :name, placeholder: "Name", class: "border border-gray-200 rounded flex-1 p-1" %>
     <%= form.number_field :quantity, placeholder: "Quantity", class: "border border-gray-200 rounded p-1 w-[6rem]" %>
-    <%= form.text_field :unit_price, placeholder: "Price", class: "border border-gray-200 rounded p-1 w-[6rem]" %>
+    <%= form.text_field :unit_price, placeholder: "Price", class: "border border-gray-200 rounded p-1 w-[7rem]" %>
     <%= form.textarea :description, placeholder: "Short description of article (optional)", class: "border border-gray-200 rounded p-1 order-2 basis-full max-w-full" %>
-    <div class="flex gap-2 w-[6rem]">
-      <%= link_to "Cancel", quote_path(quote), class: "bg-gray-200 px-2 py-1 rounded" %>
-      <%= form.submit class: "bg-gray-200 px-2 py-1 rounded" %>
+    <div class="flex gap-2 w-[5rem]">
+      <%= link_to quote_path(quote), class: "block bg-gray-200 p-1 border rounded-md hover:bg-gray-300" do %>
+        <span class="sr-only">Cancel</span>
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9h13a5 5 0 0 1 0 10H7M3 9l4-4M3 9l4 4"/>
+        </svg>
+      <% end %>
+      <%= form.button class: "bg-green-500 text-white p-1 border rounded-md hover:bg-green-600" do |text| %>
+        <span class="sr-only"><%= text %></span>
+        <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5"/>
+        </svg>
+      <% end %>
     </div>
   </div>
 <% end %>
