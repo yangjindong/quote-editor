@@ -33,7 +33,7 @@
       <% end %>
       <%= turbo_frame_tag nested_dom_id(line_item_date, LineItem.new) %>
       <div class="p-3 text-center border border-dashed">
-        <%= link_to "Add Item", [:new, quote, line_item_date, :line_item], data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) },class: "bg-primary-500 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-700" %>
+        <%= link_to "Add item", [:new, quote, line_item_date, :line_item], data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) },class: "bg-primary-500 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-700" %>
       </div>
     </div>
   </div>

@@ -1,35 +1,24 @@
-<h1>Sign up</h1>
-
-<%= form_with(url: sign_up_path) do |form| %>
-  <% if @user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<h1 class="mb-5 text-3xl font-semibold text-center">Sign up</h1>
+<%= form_with(url: sign_up_path, class: "max-w-sm mx-auto flex flex-col gap-3") do |form| %>
+  <%= form_error_notification(@user) %>
   <div>
     <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, value: @user.email, required: true, autofocus: true, autocomplete: "email" %>
+    <%= form.email_field :email, value: @user.email, required: true, autofocus: true, autocomplete: "email", class: "bg-gray-50 border border-gray-300 rounded block w-full p-2" %>
   </div>
-
   <div>
     <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password, required: true, autocomplete: "new-password" %>
+    <%= form.password_field :password, required: true, autocomplete: "new-password", class: "bg-gray-50 border border-gray-300 rounded block w-full p-2" %>
     <div>12 characters minimum.</div>
   </div>
-
   <div>
     <%= form.label :password_confirmation, style: "display: block" %>
-    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
+    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "bg-gray-50 border border-gray-300 rounded block w-full p-2" %>
   </div>
-
   <div>
-    <%= form.submit "Sign up" %>
+    <%= form.label :company_id, style: "display: block" %>
+    <%= form.select :company_id, options_for_select(Company.all.map { |c| [c.name, c.id] }, selected: @user.company_id), {}, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  </div>
+  <div class="text-center">
+    <%= form.submit "Sign up", class: "bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>

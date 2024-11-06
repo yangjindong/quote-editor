@@ -1,10 +1,12 @@
 require "application_system_test_case"
+require "test_helper"
 
 class LineItemSystemTest < ApplicationSystemTestCase
   include ActionView::Helpers::NumberHelper
 
   setup do
-    login_as users(:accountant)
+    @user = users(:accountant)
+    sign_in_as(@user)
 
     @quote          = quotes(:first)
     @line_item_date = line_item_dates(:today)
@@ -23,12 +25,13 @@ class LineItemSystemTest < ApplicationSystemTestCase
 
     fill_in "Name", with: "Animation"
     fill_in "Quantity", with: 1
-    fill_in "Unit price", with: 1234
+    fill_in "Price", with: 1234
     click_on "Create item"
 
     assert_selector "h1", text: "First quote"
     assert_text "Animation"
     assert_text number_to_currency(1234)
+    assert_text number_to_currency(@quote.total_price)
   end
 
   test "Updating a line item" do
@@ -40,11 +43,12 @@ class LineItemSystemTest < ApplicationSystemTestCase
     assert_selector "h1", text: "First quote"
 
     fill_in "Name", with: "Capybara article"
-    fill_in "Unit price", with: 1234
+    fill_in "Price", with: 1234
     click_on "Update item"
 
     assert_text "Capybara article"
     assert_text number_to_currency(1234)
+    assert_text number_to_currency(@quote.total_price)
   end
 
   test "Destroying a line item" do
@@ -52,27 +56,16 @@ class LineItemSystemTest < ApplicationSystemTestCase
       assert_text @line_item.name
     end
 
-    within "##{dom_id(@line_item)}" do
-      click_on "Delete"
+    accept_confirm do
+      within "##{dom_id(@line_item)}" do
+        click_on "Delete"
+      end
     end
 
     within "##{dom_id(@line_item_date)}" do
       assert_no_text @line_item.name
     end
-  end
 
-  test "Creating a new line item" do
-    # All the previous code
-    assert_text number_to_currency(@quote.total_price)
-  end
-
-  test "Updating a line item" do
-    # All the previous code
-    assert_text number_to_currency(@quote.total_price)
-  end
-
-  test "Destroying a line item" do
-    # All the previous code
     assert_text number_to_currency(@quote.total_price)
   end
 end

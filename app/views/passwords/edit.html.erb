@@ -1,43 +1,24 @@
-<p style="color: red"><%= alert %></p>
-
-<h1>Change your password</h1>
-
-<%= form_with(url: password_path, method: :patch) do |form| %>
-  <% if @user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<h1 class="mb-5 text-3xl font-semibold text-center">Change your password</h1>
+<%= form_with(url: password_path, method: :patch, class: "max-w-sm mx-auto flex flex-col gap-3") do |form| %>
+  <%= form_error_notification(@user) %>
   <div>
     <%= form.label :password_challenge, style: "display: block" %>
-    <%= form.password_field :password_challenge, required: true, autofocus: true, autocomplete: "current-password" %>
+    <%= form.password_field :password_challenge, required: true, autofocus: true, autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 rounded block w-full p-2" %>
   </div>
-
   <div>
     <%= form.label :password, "New password", style: "display: block" %>
-    <%= form.password_field :password, required: true, autocomplete: "new-password" %>
+    <%= form.password_field :password, required: true, autocomplete: "new-password", class: "bg-gray-50 border border-gray-300 rounded block w-full p-2" %>
     <div>12 characters minimum.</div>
   </div>
-
   <div>
     <%= form.label :password_confirmation, "Confirm new password", style: "display: block" %>
-    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
+    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "bg-gray-50 border border-gray-300 rounded block w-full p-2" %>
   </div>
-
-  <div>
-    <%= form.submit "Save changes" %>
+  <div class="text-center">
+    <%= form.submit "Save changes", class: "bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>
-
 <br>
-
 <div>
   <%= link_to "Back", root_path %>
 </div>

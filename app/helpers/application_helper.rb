@@ -5,7 +5,7 @@ module ApplicationHelper
 
   def form_error_notification(object)
     if object.errors.any?
-      tag.div class: "error-message" do
+      tag.div class: "flex align-start gap-2 w-full bg-red-100 p-2 rounded-md text-red-500 mb-3" do
         object.errors.full_messages.to_sentence.capitalize
       end
     end

@@ -1,14 +1,10 @@
-<p style="color: red"><%= alert %></p>
-
-<h1>Forgot your password?</h1>
-
-<%= form_with(url: identity_password_reset_path) do |form| %>
+<h1 class="mb-5 text-3xl font-semibold text-center">Forgot your password?</h1>
+<%= form_with(url: identity_password_reset_path, class: "max-w-sm mx-auto flex flex-col gap-3") do |form| %>
   <div>
     <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, required: true, autofocus: true %>
+    <%= form.email_field :email, required: true, autofocus: true, class: "bg-gray-50 border border-gray-300 rounded block w-full p-2" %>
   </div>
-
-  <div>
-    <%= form.submit "Send password reset email" %>
+  <div class="text-center">
+    <%= form.submit "Send password reset email", class: "bg-primary-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>

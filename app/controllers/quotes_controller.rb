@@ -3,7 +3,7 @@ class QuotesController < ApplicationController
 
   # GET /quotes or /quotes.json
   def index
-    @quotes = current_company.quotes.order(id: :desc)
+    @quotes = current_company.quotes.ordered
   end
 
   # GET /quotes/1 or /quotes/1.json
@@ -62,13 +62,13 @@ class QuotesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quote
-      @quote = current_company.quotes.find(params.expect(:id))
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_quote
+    @quote = current_company.quotes.find(params.expect(:id))
+  end
 
-    # Only allow a list of trusted parameters through.
-    def quote_params
-      params.expect(quote: [ :name ])
-    end
+  # Only allow a list of trusted parameters through.
+  def quote_params
+    params.expect(quote: [ :name ])
+  end
 end

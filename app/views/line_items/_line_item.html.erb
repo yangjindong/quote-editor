@@ -10,7 +10,7 @@
       <%= line_item.quantity %>
     </div>
     <div class="w-[6rem]">
-      <%= line_item.unit_price %>
+      <%= number_to_currency line_item.unit_price %>
     </div>
     <div class="flex order-2 gap-2 w-[5rem]">
       <%= button_to [quote, line_item_date, line_item], method: :delete, form: { data: { turbo_confirm: "Are you sure?" } },class: "bg-gray-100 text-white p-1 border rounded-md hover:bg-gray-200" do %>
